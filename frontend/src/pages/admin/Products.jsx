@@ -146,12 +146,13 @@ function Form({ init, categories, onSave, onClose }) {
       <label className="block text-sm text-ink/70">
         Price (₹)
         <input
-          className="input mt-1"
-          type="number"
-          min="1"
-          value={f.price}
-          onChange={set('price')}
-          disabled={saving}
+            className="input mt-1 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            type="number"
+            min="1"
+            step="1"
+            value={f.price}
+            onChange={set('price')}
+            disabled={saving}
         />
       </label>
 
