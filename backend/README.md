@@ -1,33 +1,34 @@
-# Loop & Lane Crochet: backend (FastAPI)
+# Loop & Lane Crochet API (FastAPI)
 
-## Run locally (Windows)
-```
+## Local setup (Windows)
+
+```powershell
 cd backend
 python -m venv venv
-venv\Scripts\activate
+.\venv\Scripts\activate
 pip install -r requirements.txt
 copy .env.example .env
 ```
-Edit `.env`: set `JWT_SECRET` (run `python -c "import secrets;print(secrets.token_urlsafe(48))"`), `ADMIN_EMAIL`, `ADMIN_PASSWORD`, and `CLOUDINARY_URL`.
-Leave `DATABASE_URL` as it is to try the API on a local SQLite file first, or point it at PostgreSQL.
-```
+
+Set `JWT_SECRET` to a random value of at least 32 characters, and configure `ADMIN_EMAIL` and `ADMIN_PASSWORD`. The first startup creates the database tables, default categories, site settings and initial admin account. Local development uses SQLite when `DATABASE_URL` is unset. Configure `CLOUDINARY_URL` to enable product photo uploads.
+
+```powershell
 uvicorn app.main:app --reload
 ```
-Interactive docs: http://localhost:8000/docs
 
-## What happens on first start
-Tables are created, the 7 default categories and the settings row are added, and the admin account from `ADMIN_EMAIL` / `ADMIN_PASSWORD` is created. The password is stored hashed (bcrypt).
+Interactive API docs: http://localhost:8000/docs
 
-## Endpoints (all under /api)
+## API endpoints (under `/api`)
+
 | Method | Path | Access |
 |---|---|---|
-| POST | /auth/login, /auth/logout | public |
-| GET | /auth/me | admin |
-| GET | /products, /products/{id} | public (filters: category, status, q) |
-| POST, PUT | /products, /products/{id} | admin, multipart form with `images` |
-| PATCH | /products/{id}/status | admin |
-| DELETE | /products/{id} | admin |
-| GET | /categories, /settings | public |
-| POST, PUT, DELETE | /categories, /categories/{id}; PUT /settings | admin |
+| POST | `/auth/login` | Public |
+| GET | `/auth/me` | Admin |
+| GET | `/products`, `/products/{id}` | Public |
+| POST, PUT, PATCH, DELETE | `/products` and `/products/{id}` | Admin |
+| GET | `/categories` | Public |
+| POST, PUT, DELETE | `/categories` and `/categories/{id}` | Admin |
+| GET | `/settings` | Public |
+| PUT | `/settings` | Admin |
 
-Images: JPG, PNG or WebP, max 5 MB each, up to 8 per product, checked by file signature, stored on Cloudinary and served resized (`f_auto,q_auto,w_1200`).
+Product creation and updates use multipart form data; attach one or more `images` files. JPG, PNG and WebP are supported, max 5 MB each and up to 8 images per product. Images are stored in Cloudinary.
