@@ -9,6 +9,7 @@ function Form({ init, categories, onSave, onClose }) {
   const [f, setF] = useState(init)
   const [err, setErr] = useState('')
   const [imgs, setImgs] = useState([])
+  const [saving, setSaving] = useState(false)
   const [removedImageIds, setRemovedImageIds] = useState([])
   const [newPreviews, setNewPreviews] = useState([])
   const [primaryImage, setPrimaryImage] = useState(() => {

@@ -2,7 +2,7 @@ export const catArt={'Crochet Bags':'bag','Crochet Flowers':'flower','Crochet To
 const P=(id,name,category,price,status,description,art,specs,f,b)=>({id,name,category,price,status,description,art,specs,featured:!!f,best:!!b})
 export default{
 categories:Object.keys(catArt),
-settings:{businessName:'Loop & Lane Crochet',whatsapp:'919876543210',email:'hello@loopandlane.in',phone:'+91 98765 43210'},
+settings:{businessName:'Loop & Lane Crochet',whatsapp:'918838724331',email:'hello@loopandlane.in',phone:'+91 88387 24331'},
 products:[
 P(1,'Sunday Market Tote','Crochet Bags',1450,'available','Roomy cotton tote with reinforced handles.',{t:'bag',c:'#8d6e63',bg:'#efe3d3'},['Cotton yarn, 4 ply','34 × 30 cm','Fully lined','Spot clean only'],1,1),
 P(2,'Sunflower Bouquet','Crochet Flowers',650,'available','Everlasting sunflowers, six stems with wire.',{t:'flower',c:'#e2b33d',bg:'#e3e9da'},['Milk cotton yarn','6 stems, 35 cm tall','Wire stems','Never wilts'],1,1),

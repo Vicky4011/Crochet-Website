@@ -10,7 +10,7 @@ def seed(db: Session) -> None:
     if not db.scalar(select(Category.id).limit(1)):
         db.add_all(Category(name=n) for n in CATEGORIES)
     if not db.get(SiteSettings, 1):
-        db.add(SiteSettings(id=1, whatsapp="919876543210", email="hello@loopandlane.in", phone="+91 98765 43210"))
+        db.add(SiteSettings(id=1, whatsapp="918838724331", email="hello@loopandlane.in", phone="+91 88387 24331"))
     if settings.ADMIN_EMAIL and settings.ADMIN_PASSWORD and not db.scalar(select(User).where(User.email == settings.ADMIN_EMAIL)):
         db.add(User(email=settings.ADMIN_EMAIL, password_hash=hash_password(settings.ADMIN_PASSWORD)))
     db.commit()
