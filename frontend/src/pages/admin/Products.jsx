@@ -11,7 +11,14 @@ function Form({ init, categories, onSave, onClose }) {
   const [imgs, setImgs] = useState([])
   const [removedImageIds, setRemovedImageIds] = useState([])
   const [newPreviews, setNewPreviews] = useState([])
-  const [saving, setSaving] = useState(false)
+  const [primaryImage, setPrimaryImage] = useState(() => {
+  const selected = init.images?.find(image => image.is_primary)
+  return selected ? `existing:${selected.id}` : (
+    init.images?.[0]
+      ? `existing:${init.images[0].id}`
+      : 'new:0'
+  )
+})
 
   const existingImages = (init.images || []).filter(
     image => !removedImageIds.includes(image.id)
@@ -113,13 +120,27 @@ function Form({ init, categories, onSave, onClose }) {
     setErr('')
 
     try {
-      await onSave({
-        ...f,
-        name: f.name.trim(),
-        price: Number(f.price),
-        newImages: imgs,
-        remove_image_ids: removedImageIds,
-      })
+      const primaryIsNew = primaryImage.startsWith('new:')
+
+await onSave({
+  ...f,
+  name: f.name.trim(),
+  price: Number(f.price),
+  newImages: imgs,
+  remove_image_ids: removedImageIds,
+
+  primary_image_id: primaryIsNew
+    ? null
+    : Number(primaryImage.replace('existing:', '')),
+
+  primary_image_new_index: primaryIsNew
+    ? Number(primaryImage.replace('new:', ''))
+    : null,
+
+  primary_image_index: primaryIsNew
+    ? Number(primaryImage.replace('new:', ''))
+    : 0
+})
     } catch (error) {
       setErr(error.message || 'Unable to save the product.')
     } finally {
@@ -219,9 +240,25 @@ function Form({ init, categories, onSave, onClose }) {
                   <X size={15} />
                 </button>
 
-                <span className="absolute bottom-2 left-2 rounded-md bg-white/90 px-2 py-0.5 text-[10px] text-ink">
-                  Existing
-                </span>
+                <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between gap-1">
+  <span className="rounded-md bg-white/90 px-2 py-1 text-[10px] text-ink">
+    Existing
+  </span>
+
+  <button
+    type="button"
+    onClick={() => setPrimaryImage(`existing:${image.id}`)}
+    className={`rounded-md px-2 py-1 text-[10px] ${
+      primaryImage === `existing:${image.id}`
+        ? 'bg-[#795548] text-white'
+        : 'bg-white text-ink'
+    }`}
+  >
+    {primaryImage === `existing:${image.id}`
+      ? 'Main image ✓'
+      : 'Set as main'}
+  </button>
+</div>
               </div>
             ))}
 
@@ -246,9 +283,25 @@ function Form({ init, categories, onSave, onClose }) {
                   <X size={15} />
                 </button>
 
-                <span className="absolute bottom-2 left-2 rounded-md bg-white/90 px-2 py-0.5 text-[10px] text-ink">
-                  New
-                </span>
+                <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between gap-1">
+  <span className="rounded-md bg-white/90 px-2 py-1 text-[10px] text-ink">
+    New
+  </span>
+
+  <button
+    type="button"
+    onClick={() => setPrimaryImage(`new:${index}`)}
+    className={`rounded-md px-2 py-1 text-[10px] ${
+      primaryImage === `new:${index}`
+        ? 'bg-[#795548] text-white'
+        : 'bg-white text-ink'
+    }`}
+  >
+    {primaryImage === `new:${index}`
+      ? 'Main image ✓'
+      : 'Set as main'}
+  </button>
+</div>
               </div>
             ))}
           </div>

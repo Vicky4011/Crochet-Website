@@ -71,14 +71,20 @@ async function request(path, options = {}) {
 // --------------------------------------
 
 function productFromApi(product) {
+  const images = [...(product.images || [])].sort(
+    (a, b) => Number(b.is_primary) - Number(a.is_primary)
+  )
+
   return {
     ...product,
+
     art: {
       t: catArt[product.category] || 'bag',
       c: '#a98f7a',
       bg: '#eee4d6',
     },
-    images: product.images || [],
+
+    images,
   }
 }
 
@@ -96,6 +102,18 @@ function settingsFromApi(settings) {
     whatsapp: settings.whatsapp || '',
     email: settings.email || '',
     phone: settings.phone || '',
+
+    homepageImageId: settings.homepageImageId ??
+      settings.homepage_image_id ?? null,
+
+    aboutImageId: settings.aboutImageId ??
+      settings.about_image_id ?? null,
+
+    homepageImageUrl: settings.homepageImageUrl ??
+      settings.homepage_image_url ?? null,
+
+    aboutImageUrl: settings.aboutImageUrl ??
+      settings.about_image_url ?? null,
   }
 }
 
@@ -163,9 +181,6 @@ async function productPayload(product, partial = false) {
 
     let categoryId = product.category_id
 
-    // Always resolve the selected category name first.
-    // This prevents an old category_id from being submitted
-    // when the admin changes the category in the edit form.
     if (product.category) {
       const selectedCategory = categoryRecords.find(
         category => category.name === product.category
@@ -205,6 +220,24 @@ async function productPayload(product, partial = false) {
   // Specifications
   if (!partial || has('specs')) {
     append('specs', JSON.stringify(product.specs || []))
+  }
+
+  // Main image selection for new products
+  if (!partial && has('primary_image_index')) {
+    append('primary_image_index', product.primary_image_index)
+  }
+
+  // Main image selection for existing products
+  if (partial && has('primary_image_id')) {
+    append('primary_image_id', product.primary_image_id)
+  }
+
+  // Main image selection from newly uploaded images
+  if (partial && has('primary_image_new_index')) {
+    append(
+      'primary_image_new_index',
+      product.primary_image_new_index
+    )
   }
 
   // New image uploads
@@ -351,9 +384,19 @@ export async function getSettings() {
 export async function updateSettings(settings) {
   const payload = {
     businessName: settings.businessName,
+
     whatsapp: String(settings.whatsapp || '').replace(/\D/g, ''),
+
     email: settings.email || '',
     phone: settings.phone || '',
+
+    homepageImageId: settings.homepageImageId
+      ? Number(settings.homepageImageId)
+      : null,
+
+    aboutImageId: settings.aboutImageId
+      ? Number(settings.aboutImageId)
+      : null,
   }
 
   return settingsFromApi(
