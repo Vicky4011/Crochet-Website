@@ -1111,3 +1111,58 @@
   margin-top: 24px;
   padding-top: 12px;
 }
+
+/* =====================================
+   HERO & OUR STORY PHOTO HOVER ANIMATION
+===================================== */
+
+/* Hero image */
+.crochet-hero-frame {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.crochet-hero-frame img {
+  transition: transform 0.7s ease;
+}
+
+.crochet-hero-frame:hover {
+  transform: rotate(0deg) scale(1.04);
+  box-shadow: 0 28px 55px #58463d35;
+}
+
+.crochet-hero-frame:hover img {
+  transform: scale(1.1);
+}
+
+
+/* Our Story image */
+.crochet-story-image {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.crochet-story-image img {
+  transition: transform 0.7s ease;
+}
+
+.crochet-story-image:hover {
+  transform: translateY(-7px);
+  box-shadow: 15px 18px 0 #fffaf2;
+}
+
+.crochet-story-image:hover img {
+  transform: scale(1.1);
+}
+
+
+/* Disable hover movement on touch devices */
+@media (hover: none) {
+  .crochet-hero-frame:hover,
+  .crochet-story-image:hover {
+    transform: none;
+  }
+
+  .crochet-hero-frame:hover img,
+  .crochet-story-image:hover img {
+    transform: none;
+  }
+}
