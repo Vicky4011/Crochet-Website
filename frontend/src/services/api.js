@@ -38,6 +38,7 @@ async function request(path, options = {}) {
     response = await fetch(`${API_BASE}${path}`, {
       ...options,
       headers,
+      cache: 'no-store',
     })
   } catch {
     throw new Error(

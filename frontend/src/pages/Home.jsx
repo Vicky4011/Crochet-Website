@@ -244,28 +244,27 @@ export default function Home() {
       {/* Best sellers */}
       {/* ---------------------------------- */}
 
-      <section className="bg-beige py-14">
+      <section className="wrap py-10">
+  <Heading>Featured pieces</Heading>
 
-        <div className="wrap">
+  {loading ? (
+    <Loading />
+  ) : error ? (
+    <ErrorBox msg={error} retry={reload} />
+  ) : (
+    <div className="grid-p">
+      {feat.map(p => (
+        <ProductCard key={p.id} p={p} />
+      ))}
+    </div>
+  )}
 
-          <Heading>
-            Best sellers
-          </Heading>
-
-          <div className="grid-p">
-
-            {best.map(product => (
-              <ProductCard
-                key={product.id}
-                p={product}
-              />
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
+  <div className="mt-8 text-center">
+    <Link to="/shop" className="btn btn-out">
+      View all products
+    </Link>
+  </div>
+</section>
 
       {/* ---------------------------------- */}
       {/* About section */}
