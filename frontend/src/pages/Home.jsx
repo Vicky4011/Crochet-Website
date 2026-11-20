@@ -307,12 +307,23 @@ export default function Home() {
             stitch by stitch, and packed with a thank-you note.
           </p>
 
-          <Link
-            to="/shop"
-            className="btn btn-pri mt-5"
-          >
-            Meet the collection
-          </Link>
+          <div className="mt-5 flex flex-wrap gap-3">
+  <Link
+    to="/shop"
+    className="btn btn-pri"
+  >
+    Meet the collection
+  </Link>
+
+  <a
+    href="https://www.instagram.com/crochet._.by._.balki/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn btn-out"
+  >
+    Follow us on Instagram ↗
+  </a>
+</div>
 
         </div>
 
@@ -400,7 +411,7 @@ export default function Home() {
 
       <section className="wrap py-14">
 
-        <Heading sub="@loopandlane">
+        <Heading>
           Follow along
         </Heading>
 
