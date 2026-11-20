@@ -40,7 +40,7 @@ const WHY = [
 
 const TST = [
   [
-    'Biscuit the bunny is my daughter’s new best friend.',
+    'The tote is stunning and sturdier than any bag I have bought in a mall.',
     'Dharshini, Chennai'
   ],
   [
@@ -48,7 +48,7 @@ const TST = [
     'Vicky, Theni'
   ],
   [
-    'The tote is stunning and sturdier than any bag I have bought in a mall.',
+    'Biscuit the bunny is my daughter’s new best friend.',
     'Ananya, Bengaluru'
   ]
 ]
