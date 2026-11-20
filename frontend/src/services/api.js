@@ -36,10 +36,10 @@ async function request(path, options = {}) {
 
   try {
     response = await fetch(`${API_BASE}${path}`, {
-      ...options,
-      headers,
-      cache: 'no-store',
-    })
+  ...options,
+  headers,
+  cache: 'no-store',
+})
   } catch {
     throw new Error(
       'Cannot reach the server. Check that the API is running and try again.'
