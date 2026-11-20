@@ -1,4 +1,4 @@
-import { MessageCircle, Instagram } from 'lucide-react'
+import { Instagram, MessageCircle, Mail, Phone } from 'lucide-react'
 import { useStore } from '../context/StoreContext'
 
 const INSTAGRAM_URL =
@@ -7,62 +7,79 @@ const INSTAGRAM_URL =
 export default function Footer() {
   const { settings: s } = useStore()
 
+  // Convert WhatsApp number into digits only
+  const whatsappNumber = String(s.whatsapp || '').replace(/\D/g, '')
+
   return (
-    <footer
-      id="footer"
-      className="scroll-mt-6 bg-coffee text-white"
-    >
-      <div className="wrap flex flex-col items-center gap-8 py-10 text-center sm:flex-row sm:items-start sm:justify-between sm:text-left">
+    <footer id="footer" className="crochet-footer">
+      <div className="crochet-footer-inner">
 
         {/* Business information */}
-        <div>
-          <p className="font-serif text-xl font-semibold">
+        <div className="footer-business">
+          <div className="footer-logo">
+            <span>✿</span>
             {s.businessName || 'Crochet By Balki'}
+          </div>
+
+          <p>
+            Handmade treasures, created with care
+            and a little extra love.
           </p>
 
-          <p className="mt-2 text-sm text-white/80">
-            Handmade crochet from Chennai, made to order.
-          </p>
+          <div className="footer-made">
+            Made with ♡ and lots of love.
+          </div>
         </div>
 
         {/* Contact information */}
-        <div className="text-sm text-white/80">
-          <p className="font-serif text-lg font-semibold text-white">
-            Contact
-          </p>
+        <div className="footer-column">
+          <h3>Say hello</h3>
 
-          <p className="mt-2">{s.email}</p>
-          <p>{s.phone}</p>
-        </div>
+          {s.email && (
+            <a href={`mailto:${s.email}`}>
+              <Mail size={15} />
+              {s.email}
+            </a>
+          )}
 
-        {/* Instagram */}
-        <div>
-          <p className="mb-3 font-serif text-lg font-semibold">
-            Follow Us
-          </p>
+          {s.phone && (
+            <a href={`tel:${s.phone}`}>
+              <Phone size={15} />
+              {s.phone}
+            </a>
+          )}
 
           <a
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-white/90 transition hover:text-white hover:underline"
           >
-            <Instagram size={19} />
+            <Instagram size={15} />
             @crochet._.by._.balki
           </a>
+
+          {whatsappNumber && (
+            <a
+              href={`https://wa.me/${whatsappNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle size={15} />
+              WhatsApp: {s.whatsapp}
+            </a>
+          )}
         </div>
 
-        {/* WhatsApp */}
-        <a
-          href={`https://wa.me/${s.whatsapp}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-wa"
-        >
-          <MessageCircle size={16} />
-          Order on WhatsApp
-        </a>
+      </div>
 
+      <div className="crochet-footer-bottom">
+        <span>
+          © {new Date().getFullYear()} {s.businessName || 'Crochet By Balki'}
+        </span>
+
+        <span>
+          MADE WITH LOVE, ONE STITCH AT A TIME ✿
+        </span>
       </div>
     </footer>
   )

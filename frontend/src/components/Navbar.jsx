@@ -1,48 +1,96 @@
+import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Heart } from 'lucide-react'
+import { Heart, Menu, X, ArrowUpRight } from 'lucide-react'
 import { useStore } from '../context/StoreContext'
 
 export default function Navbar() {
   const { settings } = useStore()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const cls = ({ isActive }) =>
-    `transition hover:text-coffee ${isActive ? 'text-coffee' : ''}`
+    `crochet-nav-link ${isActive ? 'active' : ''}`
+
+  const closeMenu = () => setMenuOpen(false)
 
   return (
-    <header className="border-b border-beige bg-ivory">
-      <div className="wrap flex flex-col items-center gap-3 py-4 sm:flex-row sm:gap-8">
+    <header className="crochet-header">
+
+      <div className="crochet-header-inner">
 
         <Link
           to="/"
-          className="flex items-center gap-2 font-serif text-xl font-semibold text-coffee"
+          className="crochet-brand"
+          onClick={closeMenu}
         >
-          <span className="grid size-7 place-items-center rounded-full bg-sage text-white">
-            <Heart size={14} fill="currentColor" />
+          <span className="crochet-brand-icon">
+            <Heart size={19} fill="currentColor" />
           </span>
 
-          {settings.businessName || 'Crochet By Balki'}
+          <span>
+            <strong>
+              {settings.businessName || 'Crochet By Balki'}
+            </strong>
+            <small>HANDMADE WITH LOVE</small>
+          </span>
         </Link>
 
-        <nav className="flex w-full justify-around text-sm font-medium sm:ml-auto sm:w-auto sm:gap-8">
+        <nav className={`crochet-nav ${menuOpen ? 'open' : ''}`}>
 
-          <NavLink to="/" end className={cls}>
+          <NavLink
+            to="/"
+            end
+            className={cls}
+            onClick={closeMenu}
+          >
             Home
           </NavLink>
 
-          <NavLink to="/shop" className={cls}>
+          <NavLink
+            to="/shop"
+            className={cls}
+            onClick={closeMenu}
+          >
             Shop
           </NavLink>
 
-          <Link to="/#about" className="transition hover:text-coffee">
-            About
+          <Link
+            to="/#story"
+            className="crochet-nav-link"
+            onClick={closeMenu}
+          >
+            Our Story
           </Link>
 
-          <Link to="/#footer" className="transition hover:text-coffee">
+          <Link
+            to="/#footer"
+            className="crochet-nav-link"
+            onClick={closeMenu}
+          >
             Contact
           </Link>
 
+          <Link
+            to="/shop"
+            className="crochet-nav-cta"
+            onClick={closeMenu}
+          >
+            Explore pieces
+            <ArrowUpRight size={15} />
+          </Link>
+
         </nav>
+
+        <button
+          className="crochet-menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation"
+          aria-expanded={menuOpen}
+        >
+          {menuOpen ? <X size={23} /> : <Menu size={23} />}
+        </button>
+
       </div>
+
     </header>
   )
 }

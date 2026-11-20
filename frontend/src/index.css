@@ -9,3 +9,1105 @@
 .tag{@apply inline-block rounded-full bg-beige px-3.5 py-1 text-xs font-medium text-coffee}
 .art svg{@apply block h-full w-full}
 .grid-p{@apply grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4}}
+
+/* =====================================
+   CROCHET BY BALKI - NEW HOMEPAGE
+===================================== */
+
+.crochet-home {
+  overflow: hidden;
+  background: #faf6ee;
+  color: #332b29;
+}
+
+.crochet-hero {
+  position: relative;
+  padding: 65px 7%;
+  background:
+    radial-gradient(ellipse at 78% 35%, #f4dfd9 0, transparent 34%),
+    radial-gradient(ellipse at 4% 95%, #e7e8dc 0, transparent 30%),
+    #faf6ee;
+}
+
+.crochet-hero::after {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  border: 1px dashed #e6c9bf;
+  border-radius: 17px;
+  pointer-events: none;
+}
+
+.crochet-hero-inner {
+  max-width: 1180px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5%;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.crochet-kicker,
+.crochet-section-heading > span {
+  color: #ad7771;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.crochet-hero h1 {
+  font-size: clamp(45px, 5.2vw, 74px);
+  line-height: 1.08;
+  margin: 22px 0;
+  letter-spacing: -1.5px;
+}
+
+.crochet-hero h1 em {
+  color: #c9827c;
+  font-weight: 500;
+}
+
+.crochet-hero-copy > p {
+  max-width: 470px;
+  color: #887b74;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.crochet-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 30px;
+}
+
+.crochet-primary,
+.crochet-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 30px;
+  padding: 14px 22px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: .25s;
+}
+
+.crochet-primary {
+  background: #c9827c;
+  color: white;
+  box-shadow: 0 8px 20px #c9827c35;
+}
+
+.crochet-primary:hover {
+  background: #b76f6a;
+  transform: translateY(-3px);
+}
+
+.crochet-secondary {
+  border: 1px solid #d9c8b9;
+  color: #665954;
+}
+
+.crochet-secondary:hover {
+  background: #f2e8d8;
+  transform: translateY(-3px);
+}
+
+.crochet-hero-visual {
+  height: 420px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.crochet-hero-frame {
+  width: min(80%, 380px);
+  height: 370px;
+  border-radius: 48% 48% 42% 42%;
+  background: #e9d5c8;
+  border: 12px solid #fff8f0;
+  box-shadow: 0 20px 50px #58463d25;
+  overflow: hidden;
+  transform: rotate(3deg);
+}
+
+.crochet-hero-frame img,
+.crochet-story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.crochet-placeholder {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 100px;
+  background: linear-gradient(145deg, #e9d5c8, #d3b4a5, #89957c);
+}
+
+.crochet-floating-note {
+  position: absolute;
+  background: #fffdf8;
+  border: 1px solid #e9ded0;
+  padding: 12px 17px;
+  border-radius: 13px;
+  box-shadow: 0 10px 25px #59483b18;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.note-one {
+  right: 0;
+  top: 45px;
+  transform: rotate(6deg);
+}
+
+.note-two {
+  left: 0;
+  bottom: 36px;
+  transform: rotate(-6deg);
+}
+
+.crochet-flower {
+  position: absolute;
+  color: #ce8b83;
+  font-size: 42px;
+}
+
+.flower-one {
+  left: 3%;
+  top: 10px;
+}
+
+.flower-two {
+  right: 5%;
+  bottom: 5px;
+  color: #849276;
+}
+
+.crochet-trust {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 55px;
+  padding: 21px;
+  background: #fffdf8;
+  border-block: 1px solid #e9ded0;
+  color: #796d67;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.crochet-trust span::before {
+  content: "✿";
+  color: #c9827c;
+  margin-right: 9px;
+}
+
+.crochet-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 76px 7%;
+}
+
+.crochet-section-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.crochet-section-heading h2 {
+  font-size: clamp(34px, 4vw, 47px);
+  margin: 12px 0;
+}
+
+.crochet-section-heading p {
+  color: #887b74;
+  font-size: 13px;
+}
+
+.crochet-category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.crochet-category-card {
+  height: 210px;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: end;
+  padding: 20px;
+  transition: .3s;
+  isolation: isolate;
+}
+
+.crochet-category-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #fffaf0e8, transparent 80%);
+  z-index: -1;
+}
+
+.crochet-category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px #57463b18;
+}
+
+.category-0 { background: #e8d3c9; }
+.category-1 { background: #dce4d4; }
+.category-2 { background: #e3dced; }
+.category-3 { background: #efe2c8; }
+
+.category-decoration {
+  position: absolute;
+  top: 22px;
+  right: 25px;
+  font-size: 65px;
+  opacity: .9;
+  transition: .3s;
+}
+
+.crochet-category-card:hover .category-decoration {
+  transform: rotate(12deg) scale(1.1);
+}
+
+.category-art {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 80px;
+  height: 80px;
+  opacity: .8;
+}
+
+.category-title {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  color: #4d403b;
+}
+
+.category-title small {
+  display: block;
+  margin-top: 6px;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.crochet-featured {
+  background: #f3eee5;
+}
+
+.crochet-story {
+  background: #f0eee5;
+}
+
+.crochet-story-inner {
+  max-width: 1060px;
+  margin: auto;
+  padding: 75px 7%;
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 9%;
+  align-items: center;
+}
+
+.crochet-story-image {
+  height: 310px;
+  overflow: hidden;
+  border-radius: 48% 48% 15px 15px;
+  box-shadow: 12px 12px 0 #fffaf2;
+}
+
+.crochet-story-content h2 {
+  font-size: 42px;
+  margin: 15px 0;
+}
+
+.crochet-story-content p {
+  font-size: 13px;
+  line-height: 1.95;
+  color: #7c706a;
+  margin-bottom: 12px;
+}
+
+.crochet-signature {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 24px;
+  color: #b77872;
+  margin: 20px 0;
+}
+
+.crochet-why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.crochet-why-card {
+  text-align: center;
+  padding: 28px 20px;
+  border: 1px solid #e9ded0;
+  border-radius: 16px;
+  background: #fffdf8;
+  transition: .3s;
+}
+
+.crochet-why-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 28px #57463b12;
+}
+
+.why-icon {
+  width: 55px;
+  height: 55px;
+  margin: auto;
+  border-radius: 50%;
+  background: #e9e9dc;
+  color: #849276;
+  display: grid;
+  place-items: center;
+}
+
+.crochet-why-card h3 {
+  font-family: Georgia, serif;
+  font-size: 19px;
+  margin: 15px 0 8px;
+}
+
+.crochet-why-card p {
+  font-size: 12px;
+  color: #887b74;
+  line-height: 1.8;
+}
+
+.crochet-testimonials {
+  background: #f3e7e1;
+  padding: 72px 7%;
+}
+
+.crochet-testimonial-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.crochet-testimonial {
+  padding: 28px 23px;
+  border: 1px solid #ead8d0;
+  border-radius: 15px;
+  background: #fffaf6;
+  text-align: center;
+  transition: .3s;
+}
+
+.crochet-testimonial:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-stars {
+  color: #b98755;
+  letter-spacing: 4px;
+}
+
+.crochet-testimonial blockquote {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 17px 0;
+}
+
+.crochet-testimonial > span {
+  color: #887b74;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 850px) {
+  .crochet-hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .crochet-category-grid,
+  .crochet-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .crochet-story-inner {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .crochet-story-image {
+    max-width: 360px;
+    width: 100%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .crochet-hero {
+    padding: 40px 7%;
+  }
+
+  .crochet-hero-visual {
+    height: 310px;
+  }
+
+  .crochet-hero-frame {
+    height: 275px;
+    width: 255px;
+  }
+
+  .crochet-trust {
+    gap: 14px;
+    font-size: 9px;
+  }
+
+  .crochet-section {
+    padding: 55px 5%;
+  }
+
+  .crochet-category-grid {
+    gap: 11px;
+  }
+
+  .crochet-category-card {
+    height: 155px;
+    padding: 13px;
+  }
+
+  .category-decoration {
+    font-size: 48px;
+  }
+
+  .category-title {
+    font-size: 16px;
+  }
+
+  .category-art {
+    width: 55px;
+    height: 55px;
+  }
+
+  .crochet-story-inner {
+    padding: 55px 7%;
+  }
+
+  .crochet-story-content h2 {
+    font-size: 34px;
+  }
+
+  .crochet-why-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .crochet-why-card {
+    padding: 20px 12px;
+  }
+
+  .crochet-testimonials {
+    padding: 55px 5%;
+  }
+
+  .crochet-testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================
+   CROCHET BY BALKI - SHOP PAGE
+===================================== */
+
+.shop-page {
+  min-height: 75vh;
+  background: #faf6ee;
+  padding: 35px 0 85px;
+}
+
+.shop-container {
+  width: 100%;
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 7%;
+}
+
+/* Heading */
+
+.shop-heading {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.shop-kicker {
+  color: #ad7771;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.shop-heading h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(36px, 4vw, 48px);
+  font-weight: 600;
+  margin: 8px 0 5px;
+  color: #332b29;
+}
+
+.shop-divider {
+  width: 65px;
+  border-top: 2px dashed #849276;
+  margin: 12px auto;
+}
+
+.shop-heading p {
+  color: #887b74;
+  font-size: 13px;
+}
+
+/* Filters */
+
+.shop-filters {
+  display: grid;
+  grid-template-columns: 1.6fr .8fr .8fr .8fr;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.shop-filters select,
+.shop-search {
+  height: 46px;
+  width: 100%;
+  border: 1px solid #e7d9c8;
+  border-radius: 12px;
+  background: #f3eadc;
+  color: #504540;
+  font-size: 13px;
+}
+
+.shop-filters select {
+  padding: 0 14px;
+  cursor: pointer;
+  outline: none;
+}
+
+.shop-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 15px;
+  color: #9b8d83;
+}
+
+.shop-search:focus-within {
+  border-color: #c9827c;
+  box-shadow: 0 0 0 3px #c9827c18;
+}
+
+.shop-search input {
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #332b29;
+  font-size: 13px;
+}
+
+.shop-search input::placeholder {
+  color: #a39489;
+}
+
+/* Product grid */
+
+.shop-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  align-items: start;
+}
+
+/* Empty state */
+
+.shop-empty {
+  text-align: center;
+  padding: 75px 15px;
+}
+
+.shop-empty > span {
+  font-size: 45px;
+}
+
+.shop-empty h2 {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  margin: 15px 0 8px;
+}
+
+.shop-empty p {
+  font-size: 13px;
+  color: #887b74;
+}
+
+.shop-empty button {
+  margin-top: 20px;
+  background: #c9827c;
+  color: white;
+  padding: 11px 22px;
+  border-radius: 25px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .shop-product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .shop-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .shop-container {
+    padding: 0 5%;
+  }
+
+  .shop-page {
+    padding-top: 28px;
+  }
+
+  .shop-heading {
+    margin-bottom: 28px;
+  }
+
+  .shop-filters {
+    gap: 9px;
+  }
+
+  .shop-filters select,
+  .shop-search {
+    height: 44px;
+    font-size: 11px;
+  }
+
+  .shop-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+/* =====================================
+   CROCHET HEADER
+===================================== */
+
+.crochet-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 253, 248, .96);
+  border-bottom: 1px solid #e9ded0;
+  backdrop-filter: blur(12px);
+}
+
+.crochet-header-inner {
+  max-width: 1250px;
+  min-height: 80px;
+  margin: auto;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.crochet-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #332b29;
+  text-decoration: none;
+}
+
+.crochet-brand-icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed #c9827c;
+  border-radius: 50%;
+  color: #c9827c;
+  background: #fff4ef;
+}
+
+.crochet-brand strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 20px;
+}
+
+.crochet-brand small {
+  display: block;
+  margin-top: 4px;
+  color: #887b74;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.crochet-nav {
+  display: flex;
+  align-items: center;
+  gap: 29px;
+}
+
+.crochet-nav-link {
+  color: #665954;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .2s;
+}
+
+.crochet-nav-link:hover,
+.crochet-nav-link.active {
+  color: #c9827c;
+}
+
+.crochet-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 18px;
+  border: 1px solid #c9827c;
+  border-radius: 30px;
+  color: #a96864;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .2s;
+}
+
+.crochet-nav-cta:hover {
+  background: #c9827c;
+  color: white;
+}
+
+.crochet-menu-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: #665954;
+}
+
+
+/* =====================================
+   CROCHET FOOTER
+===================================== */
+
+.crochet-footer {
+  background: #485345;
+  color: #fffaf3;
+  padding: 38px 6% 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.crochet-footer::before {
+  content: "✿";
+  position: absolute;
+  right: 4%;
+  top: -65px;
+  font-size: 190px;
+  color: #ffffff;
+  opacity: .035;
+  pointer-events: none;
+}
+
+.crochet-footer-inner {
+  position: relative;
+  max-width: 1150px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.footer-business {
+  flex: 1;
+}
+
+.footer-column {
+  width: 260px;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .crochet-footer-inner {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-column {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: Georgia, serif;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.footer-logo span {
+  color: #e8b6ad;
+  font-size: 25px;
+}
+
+.footer-business > p {
+  max-width: 280px;
+  color: #e0e3d8;
+  font-size: 12px;
+  line-height: 1.9;
+  margin-top: 16px;
+}
+
+.footer-made {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 18px;
+  color: #e8c6bd;
+  font-size: 11px;
+}
+
+.footer-column h3,
+.footer-order h3 {
+  margin-bottom: 20px;
+  color: #e8c6bd;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.footer-column a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #e0e3d8;
+  font-size: 12px;
+  text-decoration: none;
+  transition: .2s;
+}
+
+.footer-column a:hover {
+  color: white;
+  transform: translateX(3px);
+}
+
+.footer-order p {
+  color: #e0e3d8;
+  font-size: 12px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.footer-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 17px;
+  border-radius: 30px;
+  background: #87977a;
+  color: white;
+  font-size: 11px;
+  text-decoration: none;
+  transition: .2s;
+}
+
+.footer-whatsapp:hover {
+  background: #9cac8e;
+  transform: translateY(-3px);
+}
+
+.crochet-footer-bottom {
+  max-width: 1150px;
+  margin: 38px auto 0;
+  padding-top: 19px;
+  border-top: 1px solid #ffffff30;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: #d2d8ca;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+
+/* =====================================
+   RESPONSIVE HEADER AND FOOTER
+===================================== */
+
+@media (max-width: 850px) {
+
+  .crochet-header-inner {
+    padding: 0 5%;
+  }
+
+  .crochet-nav {
+    gap: 15px;
+  }
+
+  .crochet-footer-inner {
+    gap: 24px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .crochet-header-inner {
+    min-height: 70px;
+    position: relative;
+  }
+
+  .crochet-brand strong {
+    font-size: 17px;
+  }
+
+  .crochet-menu-toggle {
+    display: grid;
+    place-items: center;
+    padding: 7px;
+  }
+
+  .crochet-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 20px 7%;
+    background: #fffdf8;
+    border-top: 1px solid #e9ded0;
+    border-bottom: 1px solid #e9ded0;
+    box-shadow: 0 12px 20px #57463b12;
+  }
+
+  .crochet-nav.open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .crochet-nav-link {
+    font-size: 12px;
+  }
+
+  .crochet-footer {
+    padding: 30px 6% 16px;
+  }
+
+  .crochet-footer-inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer-logo {
+    font-size: 19px;
+  }
+
+  .crochet-footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    font-size: 8px;
+    line-height: 1.8;
+  }
+
+}
+
+@media (max-width: 380px) {
+  .crochet-footer-inner {
+    flex-direction: column;
+  }
+}
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  text-align: left;
+}
+
+.footer-column a {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #e0e3d8;
+  font-size: 12px;
+  text-decoration: none;
+  transition: .2s;
+}
+
+.footer-column a:hover {
+  color: white;
+  transform: translateX(3px);
+}
+
+.crochet-footer {
+  padding: 38px 6% 16px;
+}
+
+.crochet-footer-inner {
+  gap: 24px;
+}
+
+.footer-business p {
+  margin-bottom: 8px;
+}
+
+.crochet-footer-bottom {
+  margin-top: 24px;
+  padding-top: 12px;
+}

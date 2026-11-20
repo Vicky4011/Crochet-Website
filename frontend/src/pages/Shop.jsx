@@ -1,17 +1,204 @@
-import {useMemo,useState} from 'react'
-import {useSearchParams} from 'react-router-dom'
-import {Search} from 'lucide-react'
+import { useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { Search } from 'lucide-react'
+
 import ProductCard from '../components/ProductCard'
-import {Heading,Loading,ErrorBox} from '../components/ui'
-import {useStore} from '../context/StoreContext'
+import { Loading, ErrorBox } from '../components/ui'
+import { useStore } from '../context/StoreContext'
 import useTitle from '../hooks/useTitle'
-export default function Shop(){useTitle('Shop the collection | Loop & Lane Crochet','Browse handmade crochet bags, flowers, toys, keychains, home decor and gifts.')
-const{products,categories,loading,error,reload}=useStore(),[sp,setSp]=useSearchParams(),[q,setQ]=useState(''),[sort,setSort]=useState('new'),[st,setSt]=useState(''),cat=sp.get('cat')||''
-const list=useMemo(()=>products.filter(p=>(!q||`${p.name} ${p.description} ${p.category}`.toLowerCase().includes(q.toLowerCase()))&&(!cat||p.category===cat)&&(!st||p.status===st)).sort((a,b)=>sort==='lo'?a.price-b.price:sort==='hi'?b.price-a.price:b.id-a.id),[products,q,cat,st,sort])
-return <div className="wrap py-10"><Heading sub={loading?'':`${list.length} piece${list.length===1?'':'s'}`}>The collection</Heading>
-<div className="mb-8 grid grid-cols-3 gap-2 sm:gap-3 md:grid-cols-[2fr_1fr_1fr_1fr]">
-<label className="relative col-span-3 md:col-span-1"><Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40"/><input className="input pl-10" placeholder="Search bags, flowers, toys…" value={q} onChange={e=>setQ(e.target.value)} aria-label="Search products"/></label>
-<select className="input" value={cat} onChange={e=>setSp(e.target.value?{cat:e.target.value}:{})} aria-label="Category"><option value="">All categories</option>{categories.map(c=><option key={c}>{c}</option>)}</select>
-<select className="input" value={sort} onChange={e=>setSort(e.target.value)} aria-label="Sort"><option value="new">Newest first</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select>
-<select className="input" value={st} onChange={e=>setSt(e.target.value)} aria-label="Availability"><option value="">Available &amp; sold</option><option value="available">Available only</option><option value="sold">Sold only</option></select></div>
-{loading?<Loading/>:error?<ErrorBox msg={error} retry={reload}/>:list.length?<div className="grid-p">{list.map(p=><ProductCard key={p.id} p={p}/>)}</div>:<p className="py-16 text-center text-ink/60">Nothing matches yet. Try another category or clear the search.</p>}</div>}
+
+export default function Shop() {
+  const {
+    products,
+    categories,
+    loading,
+    error,
+    reload
+  } = useStore()
+
+  const [sp, setSp] = useSearchParams()
+
+  const [q, setQ] = useState('')
+  const [sort, setSort] = useState('new')
+  const [status, setStatus] = useState('')
+
+  const category = sp.get('cat') || ''
+
+  useTitle(
+    'Shop the collection | Crochet By Balki',
+    'Explore handmade crochet bags, flowers, toys and gifts.'
+  )
+
+  const list = useMemo(() => {
+    return products
+      .filter(product =>
+        !q ||
+        `${product.name} ${product.description} ${product.category}`
+          .toLowerCase()
+          .includes(q.toLowerCase())
+      )
+      .filter(product =>
+        !category || product.category === category
+      )
+      .filter(product =>
+        !status || product.status === status
+      )
+      .sort((a, b) => {
+        if (sort === 'low') return a.price - b.price
+        if (sort === 'high') return b.price - a.price
+        return b.id - a.id
+      })
+  }, [products, q, category, status, sort])
+
+  return (
+    <main className="shop-page">
+
+      <div className="shop-container">
+
+        {/* PAGE HEADING */}
+
+        <section className="shop-heading">
+
+          <span className="shop-kicker">
+            Handmade with love
+          </span>
+
+          <h1>The collection</h1>
+
+          <div className="shop-divider" />
+
+          <p>
+            {list.length} {list.length === 1 ? 'piece' : 'pieces'}
+          </p>
+
+        </section>
+
+
+        {/* FILTERS */}
+
+        <section className="shop-filters">
+
+          <label className="shop-search">
+
+            <Search size={18} />
+
+            <input
+              type="search"
+              placeholder="Search bags, flowers, toys..."
+              value={q}
+              onChange={e => setQ(e.target.value)}
+              aria-label="Search products"
+            />
+
+          </label>
+
+
+          <select
+            value={category}
+            onChange={e =>
+              setSp(
+                e.target.value
+                  ? { cat: e.target.value }
+                  : {}
+              )
+            }
+            aria-label="Filter by category"
+          >
+
+            <option value="">All categories</option>
+
+            {categories.map(c => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+
+          </select>
+
+
+          <select
+            value={sort}
+            onChange={e => setSort(e.target.value)}
+            aria-label="Sort products"
+          >
+
+            <option value="new">Newest first</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+
+          </select>
+
+
+          <select
+            value={status}
+            onChange={e => setStatus(e.target.value)}
+            aria-label="Filter availability"
+          >
+
+            <option value="">Available & sold</option>
+            <option value="available">Available only</option>
+            <option value="sold">Sold only</option>
+
+          </select>
+
+        </section>
+
+
+        {/* PRODUCTS */}
+
+        {loading ? (
+
+          <Loading />
+
+        ) : error ? (
+
+          <ErrorBox
+            msg={error}
+            retry={reload}
+          />
+
+        ) : list.length ? (
+
+          <section className="shop-product-grid">
+
+            {list.map(product => (
+              <ProductCard
+                key={product.id}
+                p={product}
+              />
+            ))}
+
+          </section>
+
+        ) : (
+
+          <div className="shop-empty">
+
+            <span>🌸</span>
+
+            <h2>No pieces found</h2>
+
+            <p>
+              Try another search or choose a different category.
+            </p>
+
+            <button
+              onClick={() => {
+                setQ('')
+                setStatus('')
+                setSort('new')
+                setSp({})
+              }}
+            >
+              Clear filters
+            </button>
+
+          </div>
+
+        )}
+
+      </div>
+
+    </main>
+  )
+}
