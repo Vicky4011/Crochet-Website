@@ -98,10 +98,10 @@ function settingsFromApi(settings) {
     businessName:
       settings.businessName ||
       settings.business_name ||
-      'Loop & Lane Crochet',
+      'Crochet By Balki',
 
     whatsapp: settings.whatsapp || '',
-    email: settings.email || '',
+    email: settings.email || 'crochetbybalki@gmail.com',
     phone: settings.phone || '',
 
     homepageImageId: settings.homepageImageId ??
@@ -388,7 +388,7 @@ export async function updateSettings(settings) {
 
     whatsapp: String(settings.whatsapp || '').replace(/\D/g, ''),
 
-    email: settings.email || '',
+    email: settings.email || 'crochetbybalki@gmail.com',
     phone: settings.phone || '',
 
     homepageImageId: settings.homepageImageId

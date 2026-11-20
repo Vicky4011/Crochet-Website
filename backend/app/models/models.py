@@ -85,12 +85,12 @@ class SiteSettings(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
 
     business_name: Mapped[str] = mapped_column(
-        String(120),
-        default="Loop & Lane Crochet"
-    )
+    String(120),
+    default="Crochet By Balki"
+)
 
     whatsapp: Mapped[str] = mapped_column(String(20), default="")
-    email: Mapped[str] = mapped_column(String(255), default="")
+    email: Mapped[str] = mapped_column(String(255), default="crochetbybalki@gmail.com")
     phone: Mapped[str] = mapped_column(String(40), default="")
 
     # Selected images for homepage sections.

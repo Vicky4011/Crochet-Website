@@ -30,8 +30,9 @@ export function StoreProvider({ children }) {
   const [categories, setC] = useState(cached?.categories || [])
   const [settings, setS] = useState(
     cached?.settings || {
-      businessName: 'Loop & Lane Crochet',
-      whatsapp: ''
+      businessName: 'Crochet By Balki',
+      whatsapp: '',
+      email: 'crochetbybalki@gmail.com'
     }
   )
 
