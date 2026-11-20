@@ -12,20 +12,32 @@ const Ctx = createContext()
 
 export const useStore = () => useContext(Ctx)
 
+const CACHE_KEY = 'loop-lane-store-cache'
+
+function readCache() {
+  try {
+    const cached = localStorage.getItem(CACHE_KEY)
+    return cached ? JSON.parse(cached) : null
+  } catch {
+    return null
+  }
+}
+
 export function StoreProvider({ children }) {
-  const [products, setP] = useState([])
-  const [categories, setC] = useState([])
+  const cached = readCache()
 
-  const [settings, setS] = useState({
-    businessName: 'Loop & Lane Crochet',
-    whatsapp: ''
-  })
+  const [products, setP] = useState(cached?.products || [])
+  const [categories, setC] = useState(cached?.categories || [])
+  const [settings, setS] = useState(
+    cached?.settings || {
+      businessName: 'Loop & Lane Crochet',
+      whatsapp: ''
+    }
+  )
 
-  const [loading, setL] = useState(true)
-  const [booting, setBooting] = useState(true)
+  const [loading, setL] = useState(!cached)
   const [error, setE] = useState('')
   const [toast, setT] = useState('')
-
   const [admin, setA] = useState(api.session())
 
   const load = useCallback(async () => {
@@ -39,15 +51,21 @@ export function StoreProvider({ children }) {
       setP(p)
       setC(c)
       setS(s)
+
+      localStorage.setItem(
+        CACHE_KEY,
+        JSON.stringify({
+          products: p,
+          categories: c,
+          settings: s
+        })
+      )
+
       setE('')
     } catch (e) {
-      setE(
-        e.message ||
-        'Could not load website data. Please try again.'
-      )
+      setE(e.message || 'Could not load website data.')
     } finally {
       setL(false)
-      setBooting(false)
     }
   }, [])
 
@@ -66,7 +84,6 @@ export function StoreProvider({ children }) {
       })
       .catch(() => {
         api.logout()
-
         if (live) setA(null)
       })
 
@@ -83,7 +100,6 @@ export function StoreProvider({ children }) {
   const act = (fn, msg) => async (...a) => {
     try {
       const result = await fn(...a)
-
       await load()
 
       if (msg) notify(msg)
@@ -131,42 +147,7 @@ export function StoreProvider({ children }) {
 
   return (
     <Ctx.Provider value={value}>
-      {booting ? (
-        <div className="min-h-screen grid place-items-center bg-[#faf7f0]">
-          <div className="text-center">
-            <div className="mx-auto mb-4 h-9 w-9 animate-spin rounded-full border-2 border-[#806052] border-t-transparent" />
-
-            <p className="font-serif text-xl text-[#806052]">
-              Loading...
-            </p>
-          </div>
-        </div>
-      ) : error ? (
-        <div className="min-h-screen grid place-items-center bg-[#faf7f0] p-6">
-          <div className="max-w-sm text-center">
-            <h2 className="font-serif text-2xl text-[#806052]">
-              Unable to load the website
-            </h2>
-
-            <p className="mt-3 text-sm text-gray-600">
-              {error}
-            </p>
-
-            <button
-              onClick={() => {
-                setBooting(true)
-                setL(true)
-                load()
-              }}
-              className="mt-6 rounded-full bg-[#806052] px-6 py-3 text-white"
-            >
-              Try Again
-            </button>
-          </div>
-        </div>
-      ) : (
-        children
-      )}
+      {children}
 
       {toast && (
         <div
