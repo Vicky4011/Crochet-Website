@@ -12,4 +12,4 @@ return <article className="group flex flex-col overflow-hidden rounded-2xl bg-ca
 <h3 className="text-base sm:text-lg"><Link to={`/product/${p.id}`}>{p.name}</Link></h3>
 <p className="hidden max-w-[30ch] text-sm text-ink/60 sm:block">{p.description}</p>
 <p className="font-semibold text-coffee">{inr(p.price)}<span className={`block text-xs font-medium ${sold?'text-[#a6544a]':'text-sage'}`}>{sold?'Sold – can be remade':'Available'}</span></p>
-<a href={waLink(p,settings.whatsapp)} target="_blank" rel="noopener noreferrer" className="btn btn-wa btn-sm mt-auto w-full"><MessageCircle size={15}/>Enquire on WhatsApp</a></div></article>}
+<a href={waLink(p,settings.whatsapp)} target="_blank" rel="noopener noreferrer" className="btn btn-wa btn-sm mt-auto w-full max-w-[190px] px-3 py-2 text-xs"><MessageCircle size={15}/>Enquire on WhatsApp</a></div></article>}
